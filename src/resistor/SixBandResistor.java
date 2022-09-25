@@ -1,18 +1,21 @@
+package resistor;
+
 import java.util.List;
 import java.util.Optional;
 
-public class FiveBandResistor implements Resistor {
-    private final ResistorColour digit1, digit2, digit3, multiplier, tolerance;
+public class SixBandResistor implements Resistor {
+    private final ResistorColour digit1, digit2, digit3, multiplier, tolerance, tempCoeff;
 
     private final double resistanceValue;
     private final double toleranceValue;
 
-    public FiveBandResistor(
+    public SixBandResistor(
             ResistorColour digit1,
             ResistorColour digit2,
             ResistorColour digit3,
             ResistorColour multiplier,
-            ResistorColour tolerance
+            ResistorColour tolerance,
+            ResistorColour tempCoeff
     ) throws InvalidColourException {
 
         if (    digit1.getDigit().isEmpty()
@@ -20,6 +23,7 @@ public class FiveBandResistor implements Resistor {
                 || digit3.getDigit().isEmpty()
                 || multiplier.getMultiplier().isEmpty()
                 || tolerance.getTolerance().isEmpty()
+                || tempCoeff.getTempCoeff().isEmpty()
         ) {
             throw new InvalidColourException();
         }
@@ -29,6 +33,7 @@ public class FiveBandResistor implements Resistor {
         this.digit3 = digit3;
         this.multiplier = multiplier;
         this.tolerance = tolerance;
+        this.tempCoeff = tempCoeff;
 
         resistanceValue = calculateResistance(
                 digit1.getDigit().get(),
@@ -47,7 +52,7 @@ public class FiveBandResistor implements Resistor {
 
     @Override
     public List<ResistorColour> getBandColours() {
-        return List.of(digit1, digit2, digit3, multiplier, tolerance);
+        return List.of(digit1, digit2, digit3, multiplier, tolerance, tempCoeff);
     }
 
     @Override
@@ -62,6 +67,6 @@ public class FiveBandResistor implements Resistor {
 
     @Override
     public Optional<Integer> getTemperatureCoefficient() {
-        return Optional.empty();
+        return tempCoeff.getTempCoeff();
     }
 }

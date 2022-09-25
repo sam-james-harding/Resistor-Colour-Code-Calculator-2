@@ -1,18 +1,25 @@
+package resistor;
+
 import java.util.List;
 import java.util.Optional;
 
-public class FourBandResistor implements Resistor {
-    private final ResistorColour digit1, digit2, multiplier, tolerance;
+public class FiveBandResistor implements Resistor {
+    private final ResistorColour digit1, digit2, digit3, multiplier, tolerance;
 
     private final double resistanceValue;
     private final double toleranceValue;
 
-    public FourBandResistor(
-            ResistorColour digit1, ResistorColour digit2, ResistorColour multiplier, ResistorColour tolerance
+    public FiveBandResistor(
+            ResistorColour digit1,
+            ResistorColour digit2,
+            ResistorColour digit3,
+            ResistorColour multiplier,
+            ResistorColour tolerance
     ) throws InvalidColourException {
 
         if (    digit1.getDigit().isEmpty()
                 || digit2.getDigit().isEmpty()
+                || digit3.getDigit().isEmpty()
                 || multiplier.getMultiplier().isEmpty()
                 || tolerance.getTolerance().isEmpty()
         ) {
@@ -21,26 +28,28 @@ public class FourBandResistor implements Resistor {
 
         this.digit1 = digit1;
         this.digit2 = digit2;
+        this.digit3 = digit3;
         this.multiplier = multiplier;
         this.tolerance = tolerance;
 
         resistanceValue = calculateResistance(
                 digit1.getDigit().get(),
                 digit2.getDigit().get(),
+                digit3.getDigit().get(),
                 multiplier.getMultiplier().get()
         );
 
         toleranceValue = tolerance.getTolerance().get();
     }
 
-    private static double calculateResistance(int digit1, int digit2, double multiplier) {
-        int baseResistance = (digit1 * 10) + digit2;
+    private static double calculateResistance(int digit1, int digit2, int digit3, double multiplier) {
+        int baseResistance = (digit1 * 100) + (digit2 * 10) + digit3;
         return baseResistance * multiplier;
     }
 
     @Override
     public List<ResistorColour> getBandColours() {
-        return List.of(digit1, digit2, multiplier, tolerance);
+        return List.of(digit1, digit2, digit3, multiplier, tolerance);
     }
 
     @Override
