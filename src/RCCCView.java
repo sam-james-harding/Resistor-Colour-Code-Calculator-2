@@ -19,7 +19,7 @@ public class RCCCView {
     private JComboBox<ResistorColour> toleranceComboBox;
     private JComboBox<ResistorColour> tempCoeffComboBox;
     private JPanel resistorCanvasContainer;
-    private ResistorCanvas resistorCanvas;
+    private final ResistorCanvas resistorCanvas;
     private JPanel optionsPanel;
     private JLabel resistanceLabel;
 
@@ -28,24 +28,26 @@ public class RCCCView {
     private static final ResistorColour[] digitOptions = {
             ResistorColour.BLACK, ResistorColour.BROWN, ResistorColour.RED,
             ResistorColour.ORANGE, ResistorColour.YELLOW, ResistorColour.GREEN,
-            ResistorColour.BLUE, ResistorColour.PINK, ResistorColour.GREY, ResistorColour.WHITE
+            ResistorColour.BLUE, ResistorColour.VIOLET, ResistorColour.GREY, ResistorColour.WHITE
     };
 
     private static final ResistorColour[] multiplierOptions = {
             ResistorColour.BLACK, ResistorColour.BROWN, ResistorColour.RED,
             ResistorColour.ORANGE, ResistorColour.YELLOW, ResistorColour.GREEN,
-            ResistorColour.BLUE, ResistorColour.GOLD, ResistorColour.SILVER
+            ResistorColour.BLUE, ResistorColour.VIOLET, ResistorColour.GREY,
+            ResistorColour.WHITE, ResistorColour.GOLD, ResistorColour.SILVER
     };
 
     private static final ResistorColour[] toleranceOptions = {
-            ResistorColour.BROWN, ResistorColour.RED, ResistorColour.GREEN, ResistorColour.BLUE,
-            ResistorColour.PINK, ResistorColour.GOLD, ResistorColour.SILVER
+            ResistorColour.BROWN, ResistorColour.RED, ResistorColour.ORANGE,
+            ResistorColour.YELLOW, ResistorColour.GREEN, ResistorColour.BLUE,
+            ResistorColour.VIOLET, ResistorColour.GREY, ResistorColour.GOLD, ResistorColour.SILVER
     };
 
     private static final ResistorColour[] tempCoeffOptions = {
             ResistorColour.BLACK, ResistorColour.BROWN, ResistorColour.RED,
             ResistorColour.ORANGE, ResistorColour.YELLOW, ResistorColour.GREEN,
-            ResistorColour.BLUE, ResistorColour.PINK, ResistorColour.GREY
+            ResistorColour.BLUE, ResistorColour.VIOLET, ResistorColour.GREY
     };
 
     public RCCCView() {
@@ -95,7 +97,7 @@ public class RCCCView {
     }
 
     public ResistorData getResistorData() {
-        ResistorData data = new ResistorData(
+        return new ResistorData(
                 (ResistorColour) digit1ComboBox.getSelectedItem(),
                 (ResistorColour) digit2ComboBox.getSelectedItem(),
                 (ResistorColour) digit3ComboBox.getSelectedItem(),
@@ -103,8 +105,6 @@ public class RCCCView {
                 (ResistorColour) toleranceComboBox.getSelectedItem(),
                 (ResistorColour) tempCoeffComboBox.getSelectedItem()
         );
-
-        return data;
     }
 
     public void renderResistor(Resistor resistor) {

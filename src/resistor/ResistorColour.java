@@ -7,18 +7,18 @@ import java.util.Optional;
  * A colour for a band on a resistor.
  */
 public enum ResistorColour {
-    BLACK   (0,   0,   0,   0,    1.0,        null, 250),
-    BROWN   (139, 69,  19,  1,    10.0,       1.0,  100),
-    RED     (255, 0,   0,   2,    100.0,      2.0,  50),
-    ORANGE  (255, 140, 0,   3,    1000.0,     null, 15),
-    YELLOW  (255, 255, 0,   4,    10000.0,    null, 25),
-    GREEN   (0,   255, 0,   5,    100000.0,   0.5,  20),
-    BLUE    (0,   0,   255, 6,    1000000.0,  0.25, 10),
-    PINK    (255, 20,  147, 7,    10000000.0, 0.1,  5),
-    GREY    (105, 105, 105, 8,    null,       0.05, 1),
-    WHITE   (255, 255, 255, 9,    null,       null, null),
-    SILVER  (192, 192, 192, null, 0.01,       5.0, null),
-    GOLD    (255, 215, 0,   null, 0.1,        10.0,  null);
+    BLACK   (0,   0,   0,   0,    1.0,          null, 250),
+    BROWN   (139, 69,  19,  1,    10.0,         1.0,  100),
+    RED     (255, 0,   0,   2,    100.0,        2.0,  50),
+    ORANGE  (255, 140, 0,   3,    1000.0,       3.0, 15),
+    YELLOW  (255, 255, 0,   4,    10000.0,      4.0, 25),
+    GREEN   (0,   255, 0,   5,    100000.0,     0.5,  20),
+    BLUE    (0,   0,   255, 6,    1000000.0,    0.25, 10),
+    VIOLET  (131, 0,   127, 7,    10000000.0,   0.1,  5),
+    GREY    (105, 105, 105, 8,    100000000.0,  0.05, 1),
+    WHITE   (255, 255, 255, 9,    1000000000.0, null, null),
+    SILVER  (192, 192, 192, null, 0.01,         5.0, null),
+    GOLD    (255, 215, 0,   null, 0.1,          10.0,  null);
 
     private final Color color;
     private final Integer digit;
