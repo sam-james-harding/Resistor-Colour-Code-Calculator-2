@@ -17,8 +17,8 @@ public enum ResistorColour {
     PINK    (255, 20,  147, 7,    10000000.0, 0.1,  5),
     GREY    (105, 105, 105, 8,    null,       0.05, 1),
     WHITE   (255, 255, 255, 9,    null,       null, null),
-    SILVER  (192, 192, 192, null, 0.01,       10.0, null),
-    GOLD    (255, 215, 0,   null, 0.1,        5.0,  null);
+    SILVER  (192, 192, 192, null, 0.01,       5.0, null),
+    GOLD    (255, 215, 0,   null, 0.1,        10.0,  null);
 
     private final Color color;
     private final Integer digit;
@@ -85,5 +85,11 @@ public enum ResistorColour {
      */
     public Optional<Integer> getTempCoeff() {
         return Optional.ofNullable(tempCoeff);
+    }
+
+    @Override
+    public String toString() {
+        String uppercaseName = super.toString();
+        return uppercaseName.charAt(0) + uppercaseName.substring(1).toLowerCase();
     }
 }
